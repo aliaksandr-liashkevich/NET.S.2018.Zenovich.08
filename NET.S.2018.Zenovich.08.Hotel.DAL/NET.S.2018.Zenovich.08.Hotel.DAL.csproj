@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\IHotelRepository.cs" />
     <Compile Include="API\IUnitOfWork.cs" />
-    <Compile Include="Entities\Hotel.cs" />
+    <Compile Include="Entities\HotelEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\HotelRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup />

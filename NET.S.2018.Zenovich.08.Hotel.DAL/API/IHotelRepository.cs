@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace NET.S._2018.Zenovich._08.Hotel.DAL.API
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IHotelRepository : IDisposable
     {
-        IHotelRepository HotelRepository { get; }
     }
 }

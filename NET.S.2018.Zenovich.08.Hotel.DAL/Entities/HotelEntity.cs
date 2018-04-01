@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NET.S._2018.Zenovich._08.Hotel.DAL.Entities
 {
-    class Hotel
+    public class HotelEntity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

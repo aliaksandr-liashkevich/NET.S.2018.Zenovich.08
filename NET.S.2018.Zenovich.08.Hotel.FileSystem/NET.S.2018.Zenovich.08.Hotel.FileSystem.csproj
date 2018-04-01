@@ -40,7 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\IDataAccessObject.cs" />
+    <Compile Include="API\IFileManager.cs" />
+    <Compile Include="DataAccessObjects\HotelDataAccessObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\NET.S.2018.Zenovich.08.Hotel.DAL\NET.S.2018.Zenovich.08.Hotel.DAL.csproj">
+      <Project>{e4f26a9c-344d-4898-aab7-d285878287bf}</Project>
+      <Name>NET.S.2018.Zenovich.08.Hotel.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
