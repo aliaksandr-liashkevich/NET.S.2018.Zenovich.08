@@ -1,4 +1,5 @@
 ﻿using NET.S._2018.Zenovich._08.Hotel.DAL.API;
+using NET.S._2018.Zenovich._08.Hotel.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace NET.S._2018.Zenovich._08.Hotel.DAL.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private IHotelRepository hotelRepository;
+        private IRepository<HotelEntity> hotelRepository;
 
         private bool disposed = false;
 
@@ -18,36 +19,12 @@ namespace NET.S._2018.Zenovich._08.Hotel.DAL.Repositories
             hotelRepository = new HotelRepository();
         }
 
-        public IHotelRepository HotelRepository
+        public IRepository<HotelEntity> HotelRepository
         {
             get
             {
                 return hotelRepository;
             }
-        }
-
-        public void Dispose()
-        {
-            CleanUp(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void CleanUp(bool clean)
-        {
-            if (!this.disposed)
-            {
-                if (clean)
-                {
-                    hotelRepository.Dispose();
-                }
-            }
-
-            this.disposed = true;
-        }
-
-        ~UnitOfWork()
-        {
-            CleanUp(false);
         }
     }
 }

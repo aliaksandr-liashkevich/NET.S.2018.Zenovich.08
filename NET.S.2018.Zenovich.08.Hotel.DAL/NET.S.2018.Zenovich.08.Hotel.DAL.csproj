@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\IDataAccessObject.cs" />
-    <Compile Include="API\IHotelRepository.cs" />
+    <Compile Include="API\IRepository.cs" />
     <Compile Include="API\IUnitOfWork.cs" />
     <Compile Include="DataAccessObjects\HotelDataAccessObject.cs" />
     <Compile Include="Entities\HotelEntity.cs" />
