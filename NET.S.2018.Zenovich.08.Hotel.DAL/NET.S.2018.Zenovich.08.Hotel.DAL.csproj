@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\IDataAccessObject.cs" />
     <Compile Include="API\IHotelRepository.cs" />
     <Compile Include="API\IUnitOfWork.cs" />
+    <Compile Include="DataAccessObjects\HotelDataAccessObject.cs" />
     <Compile Include="Entities\HotelEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\HotelRepository.cs" />

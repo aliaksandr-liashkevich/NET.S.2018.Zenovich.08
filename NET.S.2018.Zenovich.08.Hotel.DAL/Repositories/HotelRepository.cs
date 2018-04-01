@@ -11,14 +11,13 @@ namespace NET.S._2018.Zenovich._08.Hotel.DAL.Repositories
     public class HotelRepository : IHotelRepository
     {
         private List<HotelEntity> hotels;
+        private 
+
 
         public HotelRepository()
         {
             hotels = new List<HotelEntity>();
         }
-
-
-
 
 
         public void Dispose()

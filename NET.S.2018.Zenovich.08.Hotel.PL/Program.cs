@@ -10,6 +10,7 @@ namespace NET.S._2018.Zenovich._08.Hotel.PL
     {
         static void Main(string[] args)
         {
+            ConfigurationManager.
         }
     }
 }
