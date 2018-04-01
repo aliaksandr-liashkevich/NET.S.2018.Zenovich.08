@@ -30,8 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,12 +45,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\IService.cs" />
-    <Compile Include="API\IValidationDetails.cs" />
     <Compile Include="DTO\HotelDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HotelService.cs" />
-    <Compile Include="Validation\ValidationDetails.cs" />
+    <Compile Include="Validation\Guard.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NET.S.2018.Zenovich.08.Hotel.DAL\NET.S.2018.Zenovich.08.Hotel.DAL.csproj">
+      <Project>{e4f26a9c-344d-4898-aab7-d285878287bf}</Project>
+      <Name>NET.S.2018.Zenovich.08.Hotel.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -23,6 +23,7 @@ namespace NET.S._2018.Zenovich._08.Hotel.DAL.Repositories
 
         public void Create(HotelEntity entity)
         {
+            entity.Id = Guid.NewGuid();
             hotels.Add(entity);
         }
 
