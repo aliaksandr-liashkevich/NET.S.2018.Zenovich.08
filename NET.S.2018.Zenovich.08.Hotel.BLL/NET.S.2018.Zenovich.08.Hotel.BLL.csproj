@@ -41,9 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\IService.cs" />
+    <Compile Include="API\IValidationDetails.cs" />
     <Compile Include="DTO\HotelDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HotelService.cs" />
+    <Compile Include="Validation\ValidationDetails.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
