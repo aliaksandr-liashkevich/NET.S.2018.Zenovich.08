@@ -1,9 +1,6 @@
-﻿using NET.S._2018.Zenovich._08.Hotel.DAL.API;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NET.S._2018.Zenovich._08.Hotel.DAL.API;
 using NET.S._2018.Zenovich._08.Hotel.DAL.Entities;
 using NET.S._2018.Zenovich._08.Hotel.FileSystem.API;
 using NET.S._2018.Zenovich._08.Hotel.FileSystem.DataAccessObjects;
@@ -12,8 +9,8 @@ namespace NET.S._2018.Zenovich._08.Hotel.DAL.Repositories
 {
     public class HotelRepository : IRepository<HotelEntity>
     {
-        private List<HotelEntity> hotels;
-        private IDataAccessObject<HotelEntity> hotelDataAccessObject;
+        private readonly IDataAccessObject<HotelEntity> hotelDataAccessObject;
+        private readonly List<HotelEntity> hotels;
 
         public HotelRepository()
         {
@@ -27,14 +24,19 @@ namespace NET.S._2018.Zenovich._08.Hotel.DAL.Repositories
             hotels.Add(entity);
         }
 
-        public void Delete(HotelEntity entity)
+        public void Delete(Guid id)
         {
-            hotels.Remove(entity);
+            var findedHotel = FindById(id);
+
+            if (findedHotel != null)
+            {
+                hotels.Remove(findedHotel);
+            }
         }
 
         public HotelEntity Get(Guid id)
         {
-            return hotels.Find((hotel) => hotel.Id.Equals(id));
+            return FindById(id);
         }
 
         public IEnumerable<HotelEntity> GetAll()
@@ -42,22 +44,28 @@ namespace NET.S._2018.Zenovich._08.Hotel.DAL.Repositories
             return hotels;
         }
 
+        public void Save()
+        {
+            hotelDataAccessObject.PostEntities(hotels);
+        }
+
         public void Update(HotelEntity entity)
         {
-            HotelEntity updatedHotel = hotels.Find((hotel) => hotel.Id.Equals(entity));
+            var updatedHotel = FindById(entity.Id);
+
             if (updatedHotel != null)
             {
                 updatedHotel.Name = entity.Name;
                 updatedHotel.Address = entity.Address;
                 updatedHotel.Description = entity.Description;
-                updatedHotel.StandartPricePerRoom = entity.StandartPricePerRoom;
+                updatedHotel.StandardPricePerRoom = entity.StandardPricePerRoom;
                 updatedHotel.Rating = entity.Rating;
             }
         }
 
-        public void Save()
+        private HotelEntity FindById(Guid id)
         {
-            hotelDataAccessObject.PostEntities(hotels);
+            return hotels.Find(hotel => hotel.Id.Equals(id));
         }
     }
 }

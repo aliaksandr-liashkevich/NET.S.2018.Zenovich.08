@@ -1,18 +1,23 @@
-﻿using NET.S._2018.Zenovich._08.Hotel.BLL.DTO;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NET.S._2018.Zenovich._08.Hotel.BLL.DTO;
 
 namespace NET.S._2018.Zenovich._08.Hotel.BLL.API
 {
-    public interface IHotelService
+    public interface IHotelService : IDisposable
     {
-        IEnumerable<HotelDTO> GetHotels();
+        void Add(HotelDTO hotelDTO);
+
+        void Delete(Guid id);
+
         HotelDTO GetHotel(Guid id);
-        void Create(HotelDTO hotelDTO);
+
+        IEnumerable<HotelDTO> GetHotels();
+
         void Update(HotelDTO hotelDTO);
-        void Delete(HotelDTO hotelDTO);
+
+        HotelDTO Find(String propertyValue);
+
+        IEnumerable<HotelDTO> SortByTag(String propertyName);
     }
 }

@@ -47,6 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Settings.StyleCop" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NET.S.2018.Zenovich.08.Hotel.BLL\NET.S.2018.Zenovich.08.Hotel.BLL.csproj">
+      <Project>{a602fd77-c3a2-4b6b-bf34-0e38e9da900f}</Project>
+      <Name>NET.S.2018.Zenovich.08.Hotel.BLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

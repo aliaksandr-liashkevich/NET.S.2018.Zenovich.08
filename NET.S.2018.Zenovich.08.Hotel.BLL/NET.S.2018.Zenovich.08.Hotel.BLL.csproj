@@ -52,12 +52,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Settings.StyleCop" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NET.S.2018.Zenovich.08.Hotel.DAL\NET.S.2018.Zenovich.08.Hotel.DAL.csproj">
       <Project>{e4f26a9c-344d-4898-aab7-d285878287bf}</Project>
       <Name>NET.S.2018.Zenovich.08.Hotel.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
