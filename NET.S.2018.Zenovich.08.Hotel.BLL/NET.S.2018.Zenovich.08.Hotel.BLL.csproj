@@ -34,6 +34,8 @@
       <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +48,18 @@
   <ItemGroup>
     <Compile Include="API\IService.cs" />
     <Compile Include="DTO\HotelDTO.cs" />
+    <Compile Include="Infrastructure\API\IArrayUtils.cs" />
+    <Compile Include="Infrastructure\API\IHotelDTOEquatable.cs" />
+    <Compile Include="Infrastructure\API\IReflectorUtils.cs" />
+    <Compile Include="Infrastructure\ArrayUtils.cs" />
+    <Compile Include="Infrastructure\API\HotelDtoEquatable.cs" />
+    <Compile Include="Infrastructure\Comparable\StandardPricePerRoomEquatable.cs" />
+    <Compile Include="Infrastructure\Comparable\RatingEquatable.cs" />
+    <Compile Include="Infrastructure\Comparable\NameEquatable.cs" />
+    <Compile Include="Infrastructure\Comparable\DescriptionEquatable.cs" />
+    <Compile Include="Infrastructure\Comparable\AddressEquatable.cs" />
+    <Compile Include="Infrastructure\Comparable\IdEquatable.cs" />
+    <Compile Include="Infrastructure\ReflectorUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HotelService.cs" />
     <Compile Include="Validation\Guard.cs" />
@@ -59,9 +73,6 @@
       <Project>{e4f26a9c-344d-4898-aab7-d285878287bf}</Project>
       <Name>NET.S.2018.Zenovich.08.Hotel.DAL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

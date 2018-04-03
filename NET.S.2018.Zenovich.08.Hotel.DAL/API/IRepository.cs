@@ -11,7 +11,7 @@ namespace NET.S._2018.Zenovich._08.Hotel.DAL.API
 
         T Get(Guid id);
 
-        IEnumerable<T> GetAll();
+        List<T> GetAll();
 
         void Save();
 

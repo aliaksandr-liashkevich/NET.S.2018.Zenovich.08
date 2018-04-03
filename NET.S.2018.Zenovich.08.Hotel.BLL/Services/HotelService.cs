@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using AutoMapper;
 using NET.S._2018.Zenovich._08.Hotel.BLL.API;
 using NET.S._2018.Zenovich._08.Hotel.BLL.DTO;
+using NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure;
+using NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.API;
 using NET.S._2018.Zenovich._08.Hotel.BLL.Validation;
 using NET.S._2018.Zenovich._08.Hotel.DAL.API;
 using NET.S._2018.Zenovich._08.Hotel.DAL.Entities;
@@ -14,6 +17,9 @@ namespace NET.S._2018.Zenovich._08.Hotel.BLL.Services
     public class HotelService : IHotelService
     {
         private readonly IRepository<HotelEntity> hotelRepository;
+
+        private IReflectorUtils reflectorUtils;
+        private IArrayUtils arrayUtils;
 
         private bool disposed;
 
@@ -26,6 +32,9 @@ namespace NET.S._2018.Zenovich._08.Hotel.BLL.Services
         {
             IUnitOfWork unitOfWork = new UnitOfWork();
             hotelRepository = unitOfWork.HotelRepository;
+
+            reflectorUtils = new ReflectorUtils();
+            arrayUtils = new ArrayUtils();
         }
 
         ~HotelService()
@@ -77,26 +86,39 @@ namespace NET.S._2018.Zenovich._08.Hotel.BLL.Services
             hotelRepository.Update(hotel);
         }
 
-        public HotelDTO Find(string propertyValue)
+        public HotelDTO Find(IHotelDTOEquatable hotelDtoEquatable)
         {
+            Guard.ArgumentNotNull(nameof(hotelDtoEquatable), hotelDtoEquatable);
+
+            IEnumerable<HotelEntity> hotelEntities = hotelRepository.GetAll();
+            IEnumerable<HotelDTO> hotelDTOs = Mapper.Map<IEnumerable<HotelEntity>,IEnumerable<HotelDTO>>(hotelEntities);
+
+            foreach (HotelDTO hotelDTO in hotelDTOs)
+            {
+                if (hotelDtoEquatable.Equals(hotelDTO))
+                {
+                    return hotelDTO;
+                }
+            }
+
             return null;
         }
 
         public IEnumerable<HotelDTO> SortByTag(string propertyName)
         {
-            if (ReferenceEquals(propertyName, null))
+            Guard.ArgumentNotNull(nameof(propertyName), propertyName);
+
+            if (reflectorUtils.HasHotelDTOGotProperty(propertyName) == false)
             {
-                throw new ArgumentNullException(propertyName);
+                throw new ArgumentException($"{nameof(HotelDTO)} has no {nameof(propertyName)}");
             }
 
-            PropertyInfo property = GetPropertyHotelDto(propertyName);
+            HotelEntity[] hotelEntities = hotelRepository.GetAll().ToArray();
 
-            if (property == null)
-            {
-                throw new ArgumentException("", propertyName);
-            }
-
-            return null;
+            HotelDTO[] hotelDTOs = Mapper.Map<HotelEntity[], HotelDTO[]>(hotelEntities);
+            arrayUtils.BubbleSort(hotelDTOs, reflectorUtils);
+            
+            return hotelDTOs;
         }
 
         public void Dispose()
@@ -125,28 +147,6 @@ namespace NET.S._2018.Zenovich._08.Hotel.BLL.Services
                 config.CreateMap<HotelDTO, HotelEntity>();
                 config.CreateMap<HotelEntity, HotelDTO>();
             });
-        }
-
-        private PropertyInfo GetPropertyHotelDto(string propertyName)
-        {
-            Type type = typeof(HotelDTO);
-            PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
-            PropertyInfo result = null;
-
-            foreach (PropertyInfo property in properties)
-            {
-
-                if (property.CanRead 
-                    && property.GetGetMethod(true).IsPublic 
-                    && property.PropertyType.IsSubclassOf(typeof(IComparable)) 
-                    && property.Name.Equals(propertyName))
-                {
-                    return result;
-                }
-            }
-
-            return result;
         }
     }
 }

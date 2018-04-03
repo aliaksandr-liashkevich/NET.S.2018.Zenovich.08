@@ -39,7 +39,7 @@ namespace NET.S._2018.Zenovich._08.Hotel.DAL.Repositories
             return FindById(id);
         }
 
-        public IEnumerable<HotelEntity> GetAll()
+        public List<HotelEntity> GetAll()
         {
             return hotels;
         }

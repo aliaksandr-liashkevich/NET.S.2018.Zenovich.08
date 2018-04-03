@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Reflection;
 using NET.S._2018.Zenovich._08.Hotel.BLL.DTO;
+using NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.API;
+using NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.Comparable;
 using NET.S._2018.Zenovich._08.Hotel.BLL.Services;
 
 namespace NET.S._2018.Zenovich._08.Hotel.PL
@@ -13,23 +15,28 @@ namespace NET.S._2018.Zenovich._08.Hotel.PL
             {
                 /*
                  var hotelDto = new HotelDTO();
-                 hotelDto.Name = "Nosya";
-                 hotelDto.Address = "30 Nosya Morte, 111 flat , France.";
-                 hotelDto.Description = "At Hotel Nosya you will be welcomed amongst olive trees, citron trees and magnolias, in gardens that hide exotic plants and in a wonderful outdoor pool with deck chairs; protected against the sun’s rays by big umbrellas you can enjoy a drink amongst the wisteria bushes.";
-                 hotelDto.StandardPricePerRoom = 150;
-                 hotelDto.Rating = 1.1;
+                 hotelDto.Name = "Alexandrya";
+                 hotelDto.Address = "10 Alexandrya, 20 flat , France.";
+                 hotelDto.Description = "At Hotel Alexandrya you will be welcomed amongst olive trees, citron trees and magnolias, in gardens that hide exotic plants and in a wonderful outdoor pool with deck chairs; protected against the sun’s rays by big umbrellas you can enjoy a drink amongst the wisteria bushes.";
+                 hotelDto.StandardPricePerRoom = 50;
+                 hotelDto.Rating = 2.1;
  
-                 service.Add(hotelDto);
-                */
+                 service.Add(hotelDto);*/
+                IHotelDTOEquatable equatable = new NameEquatable("Nosya");
 
-                PropertyInfo[] properties = typeof(HotelDTO).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                var qFind = service.Find(equatable);
 
+                Console.WriteLine("Finding:\n" + qFind + "\n");
 
-                foreach (var hotel in service.GetHotels())
+                var q = service.SortByTag("Rating");
+
+                foreach (var hotel in q)
                 {
                     Console.WriteLine(hotel);
                     Console.WriteLine(new string('-', 20));
                 }
+
+                Console.ReadKey();
             }
         }
     }
