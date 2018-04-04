@@ -9,7 +9,7 @@ using NET.S._2018.Zenovich._08.Bank.Storage;
 
 namespace NET.S._2018.Zenovich._08.Bank.Service
 {
-    class AccountService : IAccountService
+    public class AccountService : IAccountService
     {
         private readonly IDataAccessObject<Account> bankDataAccessObject;
 
@@ -36,7 +36,7 @@ namespace NET.S._2018.Zenovich._08.Bank.Service
                 throw new ArgumentNullException(nameof(id));
             }
 
-            return _accounts.Find((account) => account.Id.Equals(id));
+            return Find(id);
         }
 
         public IEnumerable<Account> GetAll()
@@ -52,6 +52,28 @@ namespace NET.S._2018.Zenovich._08.Bank.Service
         public IEnumerable<Account> GetAllOpened()
         {
             return _accounts.Where((account) => account.IsClosed == false);
+        }
+
+        public void AddedAmount(Guid id, decimal currency)
+        {
+            if (ReferenceEquals(id, null))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            Account account = Find(id);
+            account.AddedAmount(currency);
+        }
+
+        public void WithdrawalAmount(Guid id, decimal currency)
+        {
+            if (ReferenceEquals(id, null))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            Account account = Find(id);
+            account.WithdrawalAmount(currency);
         }
 
         public void Add(Account account)
@@ -71,7 +93,7 @@ namespace NET.S._2018.Zenovich._08.Bank.Service
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Account findedAccount = _accounts.Find((account) => account.Id.Equals(id));
+            Account findedAccount = Find(id);
 
             if (ReferenceEquals(findedAccount, null) == false)
             {
@@ -96,6 +118,11 @@ namespace NET.S._2018.Zenovich._08.Bank.Service
             }
 
             disposed = true;
+        }
+
+        private Account Find(Guid id)
+        {
+            return _accounts.Find((account) => account.Id.Equals(id));
         }
     }
 }

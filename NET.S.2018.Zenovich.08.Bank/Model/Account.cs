@@ -56,5 +56,15 @@ namespace NET.S._2018.Zenovich._08.Bank.Model
         {
             get; set;
         }
+
+        public void AddedAmount(decimal bill)
+        {
+            Amount = Amount + bill;
+        }
+
+        public void WithdrawalAmount(decimal bill)
+        {
+            Amount = Amount - bill;
+        }
     }
 }
