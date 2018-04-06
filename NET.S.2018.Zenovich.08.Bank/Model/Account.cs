@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace NET.S._2018.Zenovich._08.Bank.Model
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Serializable]
     public class Account
     {
@@ -29,42 +32,37 @@ namespace NET.S._2018.Zenovich._08.Bank.Model
 
         public string FirstName
         {
-            get; private set;
+            get; set;
         }
 
         public string LastName
         {
-            get; private set;
+            get; set;
         }
 
         public DateTime CreationDate
         {
-            get; private set;
+            get; set;
         }
 
         public AccountType Type
         {
-            get; private set;
+            get; set;
         }
 
         public decimal Amount
         {
-            get; private set;
+            get; set;
+        }
+
+        public long Bonus
+        {
+            get; set;
         }
 
         public bool IsClosed
         {
             get; set;
-        }
-
-        public void AddedAmount(decimal bill)
-        {
-            Amount = Amount + bill;
-        }
-
-        public void WithdrawalAmount(decimal bill)
-        {
-            Amount = Amount - bill;
         }
     }
 }

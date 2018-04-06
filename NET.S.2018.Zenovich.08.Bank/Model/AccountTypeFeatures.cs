@@ -3,12 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NET.S._2018.Zenovich._08.Bank.API;
 
 namespace NET.S._2018.Zenovich._08.Bank.Model
 {
-    class AccountTypeFeatures
+    public class AccountTypeFeatures : IAccountTypeFeatures
     {
         public AccountTypeFeatures(AccountType accountType)
+        {
+            Initialized(accountType);
+        }
+
+        public decimal WithdrawalPrice { get; protected set; }
+
+        public decimal AddedPrice { get; protected set; }
+
+        protected void SetPricesForBase()
+        {
+            AddedPrice = 6;
+            WithdrawalPrice = 5;
+        }
+
+        protected void SetPriceForGold()
+        {
+            AddedPrice = 5;
+            WithdrawalPrice = 4;
+        }
+
+        protected void SetPriceForPlatinum()
+        {
+            AddedPrice = 3;
+            WithdrawalPrice = 2;
+        }
+
+        protected virtual void Initialized(AccountType accountType)
         {
             switch (accountType)
             {
@@ -35,28 +63,6 @@ namespace NET.S._2018.Zenovich._08.Bank.Model
                     throw new ArgumentException("No such type of bank account.", nameof(accountType));
                 }
             }
-        }
-
-        public decimal WithdrawalPrice { get; private set; }
-
-        public decimal AddedPrice { get; private set; }
-
-        private void SetPricesForBase()
-        {
-            AddedPrice = 6;
-            WithdrawalPrice = 5;
-        }
-
-        private void SetPriceForGold()
-        {
-            AddedPrice = 5;
-            WithdrawalPrice = 4;
-        }
-
-        private void SetPriceForPlatinum()
-        {
-            AddedPrice = 3;
-            WithdrawalPrice = 2;
         }
     }
 }

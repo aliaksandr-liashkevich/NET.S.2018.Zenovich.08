@@ -9,9 +9,15 @@ using NET.S._2018.Zenovich._08.Bank.Storage;
 
 namespace NET.S._2018.Zenovich._08.Bank.Service
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="NET.S._2018.Zenovich._08.Bank.API.IAccountService" />
     public class AccountService : IAccountService
     {
         private readonly IDataAccessObject<Account> bankDataAccessObject;
+        private readonly IBonusCounter bonusCounter;
+        private readonly IAccountTypeFeatures accountTypeFeatures;
 
         private readonly List<Account> _accounts;
 
@@ -62,7 +68,11 @@ namespace NET.S._2018.Zenovich._08.Bank.Service
             }
 
             Account account = Find(id);
-            account.AddedAmount(currency);
+            if (ReferenceEquals(account, null) == false)
+            {
+                account.Bonus = bonusCounter.GetBonusFromAdded(accountTypeFeatures, currency);
+                account.Amount = account.Amount + account.Bonus + currency;
+            }
         }
 
         public void WithdrawalAmount(Guid id, decimal currency)
@@ -73,7 +83,11 @@ namespace NET.S._2018.Zenovich._08.Bank.Service
             }
 
             Account account = Find(id);
-            account.WithdrawalAmount(currency);
+            if (ReferenceEquals(account, null) == false)
+            {
+                account.Bonus = bonusCounter.GetBonusFromRefill(accountTypeFeatures, currency);
+                account.Amount = account.Amount  + account.Bonus - currency;
+            }
         }
 
         public void Add(Account account)
