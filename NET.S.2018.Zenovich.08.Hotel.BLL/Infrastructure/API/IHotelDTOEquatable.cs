@@ -9,6 +9,6 @@ namespace NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.API
 {
     public interface IHotelDTOEquatable
     {
-        bool Equals(HotelDTO first);
+        bool Equals(HotelDto first);
     }
 }

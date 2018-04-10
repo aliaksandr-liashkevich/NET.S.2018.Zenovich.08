@@ -15,7 +15,7 @@ namespace NET.S._2018.Zenovich._08.Bank.Program
         {
             using (IAccountService accountService = new AccountService())
             {
-                accountService.Add(new Account())   
+                //accountService.Add(new Account());
             }
         }
     }

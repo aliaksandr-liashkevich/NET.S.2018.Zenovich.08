@@ -24,9 +24,9 @@ namespace NET.S._2018.Zenovich._08.Hotel.PL
                  service.Add(hotelDto);*/
                 IHotelDTOEquatable equatable = new NameEquatable("Nosya");
 
-                var qFind = service.Find(equatable);
+                var queryFind = service.Find(equatable);
 
-                Console.WriteLine("Finding:\n" + qFind + "\n");
+                Console.WriteLine("Finding:\n" + queryFind + "\n");
 
                 var q = service.SortByTag("Rating");
 

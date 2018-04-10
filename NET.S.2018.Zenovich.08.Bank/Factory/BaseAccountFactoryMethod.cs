@@ -13,7 +13,7 @@ namespace NET.S._2018.Zenovich._08.Bank.Factory
     /// Implements base account factory method.
     /// </summary>
     /// <seealso cref="NET.S._2018.Zenovich._08.Bank.API.IAccountFactoryMethod" />
-    class BaseAccountFactoryMethod : IAccountFactoryMethod
+    public class BaseAccountFactoryMethod : IAccountFactoryMethod
     {
         /// <summary>
         /// Creates this instance.

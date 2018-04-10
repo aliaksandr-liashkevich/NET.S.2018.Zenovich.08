@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="API\IService.cs" />
     <Compile Include="DTO\HotelDTO.cs" />
+    <Compile Include="DTO\HotelDTOFormatter.cs" />
     <Compile Include="Infrastructure\API\IArrayUtils.cs" />
     <Compile Include="Infrastructure\API\IHotelDTOEquatable.cs" />
     <Compile Include="Infrastructure\API\IReflectorUtils.cs" />

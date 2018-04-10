@@ -13,7 +13,7 @@ namespace NET.S._2018.Zenovich._08.Bank.Factory
     /// Implements platinum account factory method.
     /// </summary>
     /// <seealso cref="NET.S._2018.Zenovich._08.Bank.API.IAccountFactoryMethod" />
-    class PlatinumAccountFactoryMethod : IAccountFactoryMethod
+    public class PlatinumAccountFactoryMethod : IAccountFactoryMethod
     {
         /// <summary>
         /// Creates this instance.

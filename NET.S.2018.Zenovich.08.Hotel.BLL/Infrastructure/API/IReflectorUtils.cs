@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.API
 {
-    interface IReflectorUtils
+    public interface IReflectorUtils
     {
-        bool HasHotelDTOGotProperty(string propertyName);
+        bool HasHotelDtoGotProperty(string propertyName);
 
-        object GetPropValue(Object obj);
+        object GetPropValue(object obj);
     }
 }

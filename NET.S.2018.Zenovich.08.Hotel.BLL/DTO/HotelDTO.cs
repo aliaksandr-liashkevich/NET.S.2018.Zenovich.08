@@ -3,9 +3,15 @@ using System.Collections.Generic;
 
 namespace NET.S._2018.Zenovich._08.Hotel.BLL.DTO
 {
-    public class HotelDTO : IComparable, IComparable<HotelDTO>, IEquatable<HotelDTO>
+    /// <summary>
+    /// Data transfer object
+    /// </summary>
+    /// <seealso cref="System.IComparable" />
+    /// <seealso cref="System.IComparable{NET.S._2018.Zenovich._08.Hotel.BLL.DTO.HotelDTO}" />
+    /// <seealso cref="System.IEquatable{NET.S._2018.Zenovich._08.Hotel.BLL.DTO.HotelDTO}" />
+    public class HotelDto : IComparable, IComparable<HotelDto>, IEquatable<HotelDto>, IFormattable
     {
-        public HotelDTO()
+        public HotelDto()
         {
             Name = string.Empty;
             Address = string.Empty;
@@ -36,10 +42,10 @@ namespace NET.S._2018.Zenovich._08.Hotel.BLL.DTO
                 throw new InvalidCastException(nameof(objHotelDTO));
             }
 
-            return CompareTo((HotelDTO)objHotelDTO);
+            return CompareTo((HotelDto)objHotelDTO);
         }
 
-        public int CompareTo(HotelDTO comparedHotelDTO)
+        public int CompareTo(HotelDto comparedHotelDTO)
         {
             if (ReferenceEquals(comparedHotelDTO, null))
             {
@@ -49,21 +55,21 @@ namespace NET.S._2018.Zenovich._08.Hotel.BLL.DTO
             return StandardPricePerRoom.CompareTo(comparedHotelDTO.Id);
         }
 
-        public override bool Equals(object objHotelDTO)
+        public override bool Equals(object objHotelDto)
         {
-            var hotelDTO = objHotelDTO as HotelDTO;
-            return hotelDTO != null &&
-                   Id.Equals(hotelDTO.Id) &&
-                   Name == hotelDTO.Name &&
-                   Address == hotelDTO.Address &&
-                   Description == hotelDTO.Description &&
-                   StandardPricePerRoom == hotelDTO.StandardPricePerRoom &&
-                   Rating == hotelDTO.Rating;
+            var hotelDto = objHotelDto as HotelDto;
+            return hotelDto != null &&
+                   Id.Equals(hotelDto.Id) &&
+                   Name == hotelDto.Name &&
+                   Address == hotelDto.Address &&
+                   Description == hotelDto.Description &&
+                   StandardPricePerRoom == hotelDto.StandardPricePerRoom &&
+                   Rating == hotelDto.Rating;
         }
 
-        public bool Equals(HotelDTO objHotelDTO)
+        public bool Equals(HotelDto objHotelDto)
         {
-            return this.Equals(objHotelDTO);
+            return this.Equals(objHotelDto);
         }
 
         public override int GetHashCode()
@@ -78,9 +84,14 @@ namespace NET.S._2018.Zenovich._08.Hotel.BLL.DTO
             return hashCode;
         }
 
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            return this.ToString();
+        }
+
         public override string ToString()
         {
-            return $"Guid: {Id}\nName: {Name}\nAddress: {Address}\nDescription: {Description}\n" +
+            return $"Type: {typeof(HotelDto)}\nName: {Name}\nAddress: {Address}\nDescription: {Description}\n" +
                    $"Standart price per room: {StandardPricePerRoom}\nRating: {Rating}";
         }
     }

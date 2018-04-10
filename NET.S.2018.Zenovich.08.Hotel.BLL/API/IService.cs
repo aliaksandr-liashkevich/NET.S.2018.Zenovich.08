@@ -7,18 +7,18 @@ namespace NET.S._2018.Zenovich._08.Hotel.BLL.API
 {
     public interface IHotelService : IDisposable
     {
-        void Add(HotelDTO hotelDTO);
+        void Add(HotelDto hotelDto);
 
         void Delete(Guid id);
 
-        HotelDTO GetHotel(Guid id);
+        HotelDto GetHotel(Guid id);
 
-        IEnumerable<HotelDTO> GetHotels();
+        IEnumerable<HotelDto> GetHotels();
 
-        void Update(HotelDTO hotelDTO);
+        void Update(HotelDto hotelDto);
 
-        HotelDTO Find(IHotelDTOEquatable hotelDtoEquatable);
+        HotelDto Find(IHotelDTOEquatable hotelDtoForEquals);
 
-        IEnumerable<HotelDTO> SortByTag(String propertyName);
+        IEnumerable<HotelDto> SortByTag(string propertyName);
     }
 }

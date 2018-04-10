@@ -9,9 +9,13 @@ namespace NET.S._2018.Zenovich._08.Hotel.FileSystem.DataAccessObjects
 {
     public class HotelDataAccessObject : IDataAccessObject<HotelEntity>
     {
+        #region Public fields
+
         public const string DefaulFilePath = "Hotels.bin";
 
         public static readonly string FilePath;
+
+        #endregion Public fields
 
         static HotelDataAccessObject()
         {
@@ -28,6 +32,12 @@ namespace NET.S._2018.Zenovich._08.Hotel.FileSystem.DataAccessObjects
             }
         }
 
+        #region Public methods
+
+        /// <summary>
+        /// Gets the hotels.
+        /// </summary>
+        /// <returns>list hotel.</returns>
         public List<HotelEntity> GetEntities()
         {
             var hotels = new List<HotelEntity>();
@@ -52,6 +62,13 @@ namespace NET.S._2018.Zenovich._08.Hotel.FileSystem.DataAccessObjects
             return hotels;
         }
 
+        /// <summary>
+        /// Posts the hotels.
+        /// </summary>
+        /// <param name="hotels">The hotels.</param>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="hotels"/>
+        /// </exception>
         public void PostEntities(List<HotelEntity> hotels)
         {
             if (ReferenceEquals(hotels, null))
@@ -72,5 +89,7 @@ namespace NET.S._2018.Zenovich._08.Hotel.FileSystem.DataAccessObjects
                 }
             }
         }
+
+        #endregion Public methods
     }
 }

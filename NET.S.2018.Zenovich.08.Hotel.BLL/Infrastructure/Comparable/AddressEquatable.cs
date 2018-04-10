@@ -8,6 +8,10 @@ using NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.API;
 
 namespace NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.Comparable
 {
+    /// <summary>
+    /// Implements address equals.
+    /// </summary>
+    /// <seealso cref="string" />
     public class AddressEquatable : HotelDtoEquatable<string>
     {
         public AddressEquatable(string address) 
@@ -15,9 +19,9 @@ namespace NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.Comparable
         {
         }
 
-        public override bool Equals(HotelDTO hotelDTO)
+        public override bool Equals(HotelDto hotelDTO)
         {
-            return hotelDTO.Address.Equals(_value);
+            return hotelDTO.Address.Equals(this.Value);
         }
     }
 }

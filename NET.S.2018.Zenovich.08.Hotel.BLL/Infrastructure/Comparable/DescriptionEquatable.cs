@@ -8,16 +8,20 @@ using NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.API;
 
 namespace NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.Comparable
 {
-    public class DescriptionEquatable : HotelDtoEquatable<String>
+    /// <summary>
+    /// Implements description equals.
+    /// </summary>
+    /// <seealso cref="string" />
+    public class DescriptionEquatable : HotelDtoEquatable<string>
     {
         public DescriptionEquatable(string description)
             : base(description)
         {
         }
 
-        public override bool Equals(HotelDTO hotelDTO)
+        public override bool Equals(HotelDto hotelDTO)
         {
-            return hotelDTO.Description.Equals(_value);
+            return hotelDTO.Description.Equals(this.Value);
         }
     }
 }

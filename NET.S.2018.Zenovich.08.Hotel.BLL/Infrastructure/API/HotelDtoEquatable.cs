@@ -9,7 +9,7 @@ namespace NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.API
 {
     public abstract class HotelDtoEquatable<T> : IHotelDTOEquatable
     {
-        protected T _value;
+        private T _value;
 
         public HotelDtoEquatable(T value)
         {
@@ -21,6 +21,11 @@ namespace NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.API
             _value = value;
         }
 
-        public abstract bool Equals(HotelDTO hotelDTO);
+        protected T Value
+        {
+            get { return _value; }
+        }
+
+        public abstract bool Equals(HotelDto hotelDTO);
     }
 }

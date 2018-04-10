@@ -8,6 +8,10 @@ using NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.API;
 
 namespace NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.Comparable
 {
+    /// <summary>
+    /// Implements id equals.
+    /// </summary>
+    /// <seealso cref="Guid" />
     public class IdEquatable : HotelDtoEquatable<Guid>
     {
         public IdEquatable(Guid id)
@@ -15,9 +19,9 @@ namespace NET.S._2018.Zenovich._08.Hotel.BLL.Infrastructure.Comparable
         {
         }
 
-        public override bool Equals(HotelDTO hotelDTO)
+        public override bool Equals(HotelDto hotelDTO)
         {
-            return hotelDTO.Id.Equals(_value);
+            return hotelDTO.Id.Equals(this.Value);
         }
     }
 }
