@@ -11,11 +11,20 @@ using NET.S._2018.Zenovich._08.Bank.Model;
 
 namespace NET.S._2018.Zenovich._08.Bank.Storage
 {
+    /// <summary>
+    /// Implements file system operations.
+    /// </summary>
+    /// <seealso cref="NET.S._2018.Zenovich._08.Bank.API.IDataAccessObject{NET.S._2018.Zenovich._08.Bank.Model.Account}" />
     public class BankDataAccessObject : IDataAccessObject<Account>
     {
-        public const string DefaulFilePath = "Accounts.bin";
+        #region Public fields
 
+        public const string DefaulFilePath = "Accounts.bin";
         public static readonly string FilePath;
+
+        #endregion Public fields
+
+        #region Static ctor
 
         static BankDataAccessObject()
         {
@@ -32,6 +41,14 @@ namespace NET.S._2018.Zenovich._08.Bank.Storage
             }
         }
 
+        #endregion Static ctor
+
+        #region Public methods
+
+        /// <summary>
+        /// Gets accounts.
+        /// </summary>
+        /// <returns>accounts</returns>
         public List<Account> GetEntities()
         {
             var accounts = new List<Account>();
@@ -45,6 +62,13 @@ namespace NET.S._2018.Zenovich._08.Bank.Storage
             return accounts;
         }
 
+        /// <summary>
+        /// Posts accounts.
+        /// </summary>
+        /// <param name="accounts">The accounts.</param>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="accounts"/>
+        /// </exception>
         public void PostEntities(List<Account> accounts)
         {
             if (ReferenceEquals(accounts, null))
@@ -58,5 +82,7 @@ namespace NET.S._2018.Zenovich._08.Bank.Storage
             formatter.Serialize(stream, accounts);
             stream.Close();
         }
+
+        #endregion Public methods
     }
 }

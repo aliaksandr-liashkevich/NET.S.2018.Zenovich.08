@@ -43,15 +43,25 @@
   <ItemGroup>
     <Compile Include="API\IAccountService.cs" />
     <Compile Include="API\IAccountTypeFeatures.cs" />
+    <Compile Include="API\IAccountFactoryMethod.cs" />
     <Compile Include="API\IBonusCounter.cs" />
     <Compile Include="API\IDataAccessObject.cs" />
+    <Compile Include="API\IAccountFactory.cs" />
+    <Compile Include="Factory\AccountFactory.cs" />
+    <Compile Include="Factory\BaseAccountFactoryMethod.cs" />
+    <Compile Include="Factory\GoldAccountFactoryMethod.cs" />
+    <Compile Include="Factory\PlatinumAccountFactoryMethod.cs" />
     <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\AccountType.cs" />
+    <Compile Include="Model\Accounts\BaseAccount.cs" />
+    <Compile Include="Model\Accounts\GoldAccount.cs" />
+    <Compile Include="Model\Accounts\PlatinumAccount.cs" />
     <Compile Include="Model\AccountTypeFeatures.cs" />
     <Compile Include="Model\BonusCounter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AccountService.cs" />
     <Compile Include="Storage\BankDataAccessObject.cs" />
+    <Compile Include="ViewModel\BillViewModel.cs" />
+    <Compile Include="ViewModel\CreatedAccountViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exception\" />

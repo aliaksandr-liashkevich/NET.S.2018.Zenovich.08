@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NET.S._2018.Zenovich._08.Bank.Model;
+using NET.S._2018.Zenovich._08.Bank.ViewModel;
 
 namespace NET.S._2018.Zenovich._08.Bank.API
 {
@@ -17,11 +18,11 @@ namespace NET.S._2018.Zenovich._08.Bank.API
 
         IEnumerable<Account> GetAllOpened();
 
-        void AddedAmount(Guid id, decimal currency);
+        void AddedAmount(BillViewModel viewModel);
 
-        void WithdrawalAmount(Guid id, decimal currency);
+        void WithdrawalAmount(BillViewModel viewModel);
 
-        void Add(Account account);
+        void Add(CreatedAccountViewModel viewModel);
 
         void Close(Guid id);
     }

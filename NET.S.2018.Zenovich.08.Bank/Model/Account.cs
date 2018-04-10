@@ -8,21 +8,17 @@ using System.Threading.Tasks;
 namespace NET.S._2018.Zenovich._08.Bank.Model
 {
     /// <summary>
-    /// 
+    /// Account type
     /// </summary>
     [Serializable]
-    public class Account
+    public abstract class Account
     {
-        protected Account(AccountType type, string firstName, string lastName)
+        protected Account()
         {
             Id = Guid.NewGuid();
             CreationDate = DateTime.Now;
-            Type = type;
             Amount = 0;
             IsClosed = false;
-
-            FirstName = firstName;
-            LastName = lastName;
         }
 
         public Guid Id
@@ -45,10 +41,7 @@ namespace NET.S._2018.Zenovich._08.Bank.Model
             get; set;
         }
 
-        public AccountType Type
-        {
-            get; set;
-        }
+        public abstract string Type { get; }
 
         public decimal Amount
         {
